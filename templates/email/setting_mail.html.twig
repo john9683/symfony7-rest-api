@@ -1,0 +1,49 @@
+{% extends 'email/email_base.html.twig' %}
+{% block content %}
+    <p>Дорогой <b>{{ email.toName|capitalize }}</b>,
+        {% if type is same as ('registration') %}
+            наконец-то ты с нами!
+        {% elseif type is same as ('update') %}
+            email аккаунта был изменён.
+        {% endif %}
+    </p>
+
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+        <tbody>
+        <tr>
+            <td align="left">
+                {% if type is same as ('registration') %}
+                    <p>
+                        Теперь ты можешь использовать все фичи нашего крутейшего сервиса!
+                    </p>
+                {% elseif type is same as ('update') %}
+                    <p>
+                        Пожалуйста подтверди новый email, чтобы он вступил в силу.
+                        После перехода на сайт можно войти, спользуя новый email.
+                    </p>
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+        <tbody>
+        <tr>
+            <td align="left">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        {% if type is same as ('registration') %}
+                            <td> <a href="{{ confirmNewEmailLink }}" target="_blank">Подтвердить email</a> </td>
+                        {% elseif type is same as ('update') %}
+                            <td> <a href="{{ confirmUpdatedEmailLink }}" target="_blank">Подтвердить email</a> </td>
+                        {% endif %}
+
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

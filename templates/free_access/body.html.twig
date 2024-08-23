@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            {% for flash in app.flashes('success_email_verified') %}
+                <div class="alert alert-warning text-center">{{ flash }}</div>
+            {% endfor %}
+            <a class="navbar-brand" href="{{ path('app_homepage') }}">Крутейший сайт</a>
+        </div>
+    </nav>
+
+{% endblock %}
